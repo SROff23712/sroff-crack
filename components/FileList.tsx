@@ -88,11 +88,11 @@ export default function FileList() {
                 className="midnight-card-hover overflow-hidden cursor-pointer animate-fadeIn"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
-                <div className="relative">
+                <div className="relative overflow-hidden aspect-[460/215] bg-[#0a0a0f]">
                   <img
                     src={file.imageUrl}
                     alt={file.title}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-full object-cover object-center"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = 'https://via.placeholder.com/400x300/0a0a0f/e0e0e8?text=Image';
                     }}

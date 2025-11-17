@@ -136,11 +136,11 @@ export default function GameDetailsPage() {
         {/* Game Content */}
         <div className="midnight-card overflow-hidden">
           {/* Hero Image */}
-          <div className="relative h-80 overflow-hidden">
+          <div className="relative aspect-[460/215] overflow-hidden bg-[#0a0a0f]">
             <img
               src={displayImage}
               alt={game.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-center"
               onError={(e) => {
                 (e.target as HTMLImageElement).src = 'https://via.placeholder.com/1200x400/0a0a0f/e0e0e8?text=Image+du+jeu';
               }}

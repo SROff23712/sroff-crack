@@ -345,14 +345,16 @@ export default function AdminPanel() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                   </svg>
                 </button>
-                <img
-                  src={file.imageUrl}
-                  alt={file.title}
-                  className="w-full h-32 object-cover rounded mb-2"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'https://via.placeholder.com/300x200/0a0a0f/e0e0e8?text=Image';
-                  }}
-                />
+                <div className="relative overflow-hidden aspect-[460/215] rounded mb-2 bg-[#0a0a0f]">
+                  <img
+                    src={file.imageUrl}
+                    alt={file.title}
+                    className="w-full h-full object-cover object-center"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://via.placeholder.com/300x200/0a0a0f/e0e0e8?text=Image';
+                    }}
+                  />
+                </div>
                 <h3 className="font-semibold text-[#e0e0e8] text-sm mb-1 pr-8">{file.title}</h3>
                 <p className="text-xs text-[#b0b0c0]">
                   {file.isMultiplayer ? '✅ Multijoueur' : '❌ Solo'}

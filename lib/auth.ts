@@ -33,6 +33,7 @@ export const logout = async () => {
 
 export const isAdmin = (user: User | null): boolean => {
   if (!user) return false;
-  return user.email === 'sroff2371222@gmail.com';
+  const adminEmails = ['sroff2371222@gmail.com', 'gp12levrai@gmail.com'];
+  return adminEmails.includes(user.email || '');
 };
 

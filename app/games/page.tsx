@@ -180,11 +180,11 @@ export default function GamesPage() {
                   className="midnight-card-hover overflow-hidden cursor-pointer animate-fadeIn group"
                   style={{ animationDelay: `${index * 0.03}s` }}
                 >
-                  <div className="relative overflow-hidden">
+                  <div className="relative overflow-hidden aspect-[460/215] bg-[#0a0a0f]">
                     <img
                       src={file.imageUrl}
                       alt={file.title}
-                      className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-300"
+                      className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-300"
                       onError={(e) => {
                         (e.target as HTMLImageElement).src = 'https://via.placeholder.com/400x300/0a0a0f/e0e0e8?text=Image';
                       }}
