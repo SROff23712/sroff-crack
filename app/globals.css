@@ -1,0 +1,214 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background: #0a0a0f;
+  color: #e0e0e8;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #0a0a0f 0%, #1a0a2e 50%, #16213e 100%);
+  min-height: 100vh;
+  background-attachment: fixed;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Animations personnalisées */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.5s ease-out;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Effet de brillance sur les boutons */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Midnight style cards */
+.midnight-card {
+  background: rgba(15, 15, 25, 0.8);
+  border: 1px solid rgba(138, 43, 226, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.midnight-card-hover {
+  background: rgba(15, 15, 25, 0.8);
+  border: 1px solid rgba(138, 43, 226, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease-out;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.midnight-card-hover:hover {
+  background: rgba(20, 15, 35, 0.9);
+  border-color: rgba(138, 43, 226, 0.5);
+  box-shadow: 0 12px 48px rgba(138, 43, 226, 0.2), 0 0 20px rgba(75, 0, 130, 0.1);
+  transform: translateY(-2px);
+}
+
+.midnight-input {
+  background: rgba(10, 10, 20, 0.8);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  color: #e0e0e8;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.midnight-input:focus {
+  outline: none;
+  border-color: #8a2be2;
+  box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.2), 0 0 20px rgba(138, 43, 226, 0.1);
+}
+
+.midnight-input::placeholder {
+  color: rgba(224, 224, 232, 0.5);
+}
+
+.midnight-button {
+  background: linear-gradient(135deg, #6a0dad 0%, #4b0082 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+}
+
+.midnight-button:hover {
+  background: linear-gradient(135deg, #7b1fa2 0%, #5a0a9e 100%);
+  box-shadow: 0 6px 20px rgba(138, 43, 226, 0.4), 0 0 30px rgba(138, 43, 226, 0.2);
+  transform: translateY(-2px);
+}
+
+.midnight-button-secondary {
+  background: rgba(30, 20, 50, 0.8);
+  color: #e0e0e8;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+}
+
+.midnight-button-secondary:hover {
+  background: rgba(40, 25, 65, 0.9);
+  border-color: rgba(138, 43, 226, 0.5);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.2);
+}
+
+.midnight-button-danger {
+  background: linear-gradient(135deg, #8b0000 0%, #5a0000 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+}
+
+.midnight-button-danger:hover {
+  background: linear-gradient(135deg, #a00000 0%, #700000 100%);
+  box-shadow: 0 6px 20px rgba(139, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Gradient animé */
+.gradient-animated {
+  background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
