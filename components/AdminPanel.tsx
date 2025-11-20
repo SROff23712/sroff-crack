@@ -19,6 +19,7 @@ export default function AdminPanel() {
   
   // Recherche Steam
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchLocked, setSearchLocked] = useState(false);
   const [searchResults, setSearchResults] = useState<SteamSearchResult[]>([]);
   const [searching, setSearching] = useState(false);
   const [selectedGame, setSelectedGame] = useState<SteamSearchResult | null>(null);
@@ -28,6 +29,11 @@ export default function AdminPanel() {
   }, []);
 
   useEffect(() => {
+    if (searchLocked) {
+      setSearchResults([]);
+      return;
+    }
+
     const delayDebounce = setTimeout(() => {
       if (searchQuery.length > 2) {
         handleSteamSearch();
@@ -37,7 +43,7 @@ export default function AdminPanel() {
     }, 500);
 
     return () => clearTimeout(delayDebounce);
-  }, [searchQuery]);
+  }, [searchQuery, searchLocked]);
 
   const loadFiles = async () => {
     try {
@@ -82,6 +88,7 @@ export default function AdminPanel() {
     setImageUrl(game.header_image || '');
     setSearchQuery(game.name);
     setSearchResults([]);
+    setSearchLocked(true);
 
     try {
       const details = await getSteamGameDetails(game.appid);
@@ -91,6 +98,28 @@ export default function AdminPanel() {
     } catch (err) {
       console.error('Error loading game details:', err);
     }
+  };
+
+  const createClictuneLink = async (originalUrl: string, gameName: string) => {
+    const endpoint = new URL('https://www.clictune.com/Links_api/create_link');
+    endpoint.searchParams.set('user_id', '146418');
+    endpoint.searchParams.set('api_key', 'zcpZkbou7gve9C6Aj13TXDtlSJMyIFRB');
+    endpoint.searchParams.set('url', originalUrl);
+    if (gameName) {
+      endpoint.searchParams.set('name', gameName);
+    }
+
+    const response = await fetch(endpoint.toString());
+    if (!response.ok) {
+      throw new Error('Impossible de générer le lien Clictune (erreur réseau).');
+    }
+
+    const data = await response.json();
+    if (!data.status || !data.shortenedUrl) {
+      throw new Error(data.message || 'La création du lien Clictune a échoué.');
+    }
+
+    return data.shortenedUrl as string;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -117,9 +146,11 @@ export default function AdminPanel() {
         }
       }
 
+      const shortenedDownloadLink = await createClictuneLink(downloadLink, title);
+
       await addFile({
         title,
-        downloadLink,
+        downloadLink: shortenedDownloadLink,
         imageUrl,
         isMultiplayer,
         ...steamData
@@ -208,7 +239,10 @@ export default function AdminPanel() {
                 <input
                   type="text"
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e) => {
+                    setSearchLocked(false);
+                    setSearchQuery(e.target.value);
+                  }}
                   className="w-full px-4 py-3 midnight-input text-sm"
                   placeholder="Tapez le nom du jeu (ex: Counter-Strike, GTA V...)"
                 />
@@ -286,6 +320,9 @@ export default function AdminPanel() {
                 className="w-full px-4 py-3 midnight-input text-sm"
                 placeholder="https://example.com/game.zip"
               />
+              <p className="text-xs text-[#b0b0c0]/70 mt-1">
+                Ce lien sera automatiquement converti en URL Clictune finale.
+              </p>
             </div>
 
             <div>

@@ -79,6 +79,12 @@ export default function Home() {
           {/* Header avec navigation */}
           <div className="flex justify-end items-center mb-16">
             <div className="flex gap-3">
+              <button
+                onClick={() => router.push('/request')}
+                className="midnight-button-secondary px-4 py-2 text-sm font-medium"
+              >
+                Besoin d'ajout ?
+              </button>
               {admin && (
                 <button
                   onClick={() => router.push('/admin')}
