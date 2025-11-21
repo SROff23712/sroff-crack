@@ -101,22 +101,25 @@ export default function AdminPanel() {
   };
 
   const createClictuneLink = async (originalUrl: string, gameName: string) => {
-    const endpoint = new URL('https://www.clictune.com/Links_api/create_link');
-    endpoint.searchParams.set('user_id', '146418');
-    endpoint.searchParams.set('api_key', 'zcpZkbou7gve9C6Aj13TXDtlSJMyIFRB');
-    endpoint.searchParams.set('url', originalUrl);
-    if (gameName) {
-      endpoint.searchParams.set('name', gameName);
-    }
+    const response = await fetch('/api/clictune/create-link', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        url: originalUrl,
+        name: gameName,
+      }),
+    });
 
-    const response = await fetch(endpoint.toString());
     if (!response.ok) {
-      throw new Error('Impossible de générer le lien Clictune (erreur réseau).');
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || 'Impossible de générer le lien Clictune (erreur réseau).');
     }
 
     const data = await response.json();
-    if (!data.status || !data.shortenedUrl) {
-      throw new Error(data.message || 'La création du lien Clictune a échoué.');
+    if (!data.shortenedUrl) {
+      throw new Error(data.error || 'La création du lien Clictune a échoué.');
     }
 
     return data.shortenedUrl as string;
