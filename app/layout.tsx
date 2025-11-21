@@ -7,7 +7,10 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'sroff-crack',
-  description: 'Jeux gratuits - sroff-crack'
+  description: 'Jeux gratuits - sroff-crack',
+  verification: {
+    google: 'ZlhiLPerpxbp6z0KG2_Vi54lHeeiYQVX4gQjtWDm0Uk'
+  }
 };
 
 export default function RootLayout({
