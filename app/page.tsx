@@ -134,9 +134,9 @@ export default function Home() {
                 🎮 Voir tous les jeux
               </button>
               {totalGames > 0 && (
-                <div className="midnight-card px-6 py-3">
-                  <p className="text-[#b0b0c0]">
-                    <span className="text-purple-400 font-bold text-xl">{totalGames}</span> jeux disponibles
+                <div className="midnight-card px-6 py-3 flex items-center justify-center -mt-2">
+                  <p className="text-[#b0b0c0] text-center text-xl">
+                    <span className="text-purple-400 font-bold">{totalGames}</span> jeux disponibles
                   </p>
                 </div>
               )}
@@ -212,11 +212,18 @@ export default function Home() {
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f] via-transparent to-transparent opacity-70"></div>
-                    {game.isMultiplayer && (
-                      <div className="absolute top-3 right-3 bg-gradient-to-r from-purple-600 to-violet-600 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg">
-                        🎮 Multijoueur
-                      </div>
-                    )}
+                    <div className="absolute top-3 right-3 flex flex-col gap-2">
+                      {game.isMultiplayer && (
+                        <div className="bg-gradient-to-r from-purple-600 to-violet-600 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg">
+                          🎮 Multijoueur
+                        </div>
+                      )}
+                      {game.isTorrent && (
+                        <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg">
+                          🌊 Torrent
+                        </div>
+                      )}
+                    </div>
                     {game.genres && game.genres.length > 0 && (
                       <div className="absolute bottom-3 left-3">
                         <span className="bg-[#0a0a0f]/90 text-purple-300 px-3 py-1 rounded-full text-xs backdrop-blur-sm font-medium">

@@ -16,6 +16,7 @@ export interface FileItem {
   downloadLink: string;
   imageUrl: string;
   isMultiplayer: boolean;
+  isTorrent?: boolean;
   createdAt?: Timestamp;
   // Informations Steam
   steamAppId?: number;

@@ -98,11 +98,18 @@ export default function FileList() {
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f] via-transparent to-transparent opacity-60"></div>
-                  {file.isMultiplayer && (
-                    <div className="absolute top-3 right-3 bg-gradient-to-r from-purple-600 to-violet-600 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg">
-                      🎮 Multijoueur
-                    </div>
-                  )}
+                  <div className="absolute top-3 right-3 flex flex-col gap-2">
+                    {file.isMultiplayer && (
+                      <div className="bg-gradient-to-r from-purple-600 to-violet-600 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg">
+                        🎮 Multijoueur
+                      </div>
+                    )}
+                    {file.isTorrent && (
+                      <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg">
+                        🌊 Torrent
+                      </div>
+                    )}
+                  </div>
                   {file.genres && file.genres.length > 0 && (
                     <div className="absolute bottom-3 left-3">
                       <span className="bg-[#0a0a0f]/90 text-purple-300 px-2 py-1 rounded text-xs backdrop-blur-sm">

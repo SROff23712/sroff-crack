@@ -12,6 +12,7 @@ export default function AdminPanel() {
   const [downloadLink, setDownloadLink] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [isMultiplayer, setIsMultiplayer] = useState(false);
+  const [isTorrent, setIsTorrent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -156,6 +157,7 @@ export default function AdminPanel() {
         downloadLink: shortenedDownloadLink,
         imageUrl,
         isMultiplayer,
+        isTorrent,
         ...steamData
       });
       
@@ -164,6 +166,7 @@ export default function AdminPanel() {
       setDownloadLink('');
       setImageUrl('');
       setIsMultiplayer(false);
+      setIsTorrent(false);
       setSelectedGame(null);
       setSearchQuery('');
       loadFiles();
@@ -355,6 +358,19 @@ export default function AdminPanel() {
               </label>
             </div>
 
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                id="torrent"
+                checked={isTorrent}
+                onChange={(e) => setIsTorrent(e.target.checked)}
+                className="w-4 h-4 text-purple-600 bg-[#0a0a0f] border-purple-500/30 rounded focus:ring-purple-500 cursor-pointer"
+              />
+              <label htmlFor="torrent" className="ml-2 text-[#e0e0e8] text-sm font-medium cursor-pointer">
+                🌊 Torrent
+              </label>
+            </div>
+
             <button
               type="submit"
               disabled={loading}
@@ -397,7 +413,7 @@ export default function AdminPanel() {
                 </div>
                 <h3 className="font-semibold text-[#e0e0e8] text-sm mb-1 pr-8">{file.title}</h3>
                 <p className="text-xs text-[#b0b0c0]">
-                  {file.isMultiplayer ? '✅ Multijoueur' : '❌ Solo'}
+                  {file.isMultiplayer ? '✅ Multijoueur' : '❌ Solo'} | {file.isTorrent ? '✅ Torrent' : '❌ Direct'}
                 </p>
               </div>
             ))}

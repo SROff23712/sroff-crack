@@ -148,11 +148,18 @@ export default function GameDetailsPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f] via-[#0a0a0f]/50 to-transparent"></div>
             <div className="absolute bottom-0 left-0 right-0 p-6">
               <h1 className="text-4xl font-bold text-[#e0e0e8] mb-2">{game.title}</h1>
-              {game.isMultiplayer && (
-                <span className="inline-block bg-gradient-to-r from-purple-600 to-violet-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                  🎮 Multijoueur
-                </span>
-              )}
+              <div className="flex gap-2 flex-wrap">
+                {game.isMultiplayer && (
+                  <span className="inline-block bg-gradient-to-r from-purple-600 to-violet-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                    🎮 Multijoueur
+                  </span>
+                )}
+                {game.isTorrent && (
+                  <span className="inline-block bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                    🌊 Torrent
+                  </span>
+                )}
+              </div>
             </div>
           </div>
 
