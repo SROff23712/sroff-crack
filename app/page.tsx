@@ -134,7 +134,7 @@ export default function Home() {
                 🎮 Voir tous les jeux
               </button>
               {totalGames > 0 && (
-                <div className="midnight-card px-6 py-3 flex items-center justify-center -mt-2">
+                <div className="midnight-card px-6 py-4 flex items-center justify-center">
                   <p className="text-[#b0b0c0] text-center text-xl">
                     <span className="text-purple-400 font-bold">{totalGames}</span> jeux disponibles
                   </p>
