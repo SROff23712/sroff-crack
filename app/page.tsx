@@ -77,7 +77,14 @@ export default function Home() {
       <div className="relative z-10 pt-20 pb-32 px-4">
         <div className="max-w-7xl mx-auto">
           {/* Header avec navigation */}
-          <div className="flex justify-end items-center mb-16">
+          <div className="flex justify-between items-center mb-16">
+            <div className="flex items-center">
+              <img 
+                src="/logo.png" 
+                alt="sroff-crack" 
+                className="w-12 h-12 rounded-full object-cover border-2 border-purple-500/50"
+              />
+            </div>
             <div className="flex gap-3">
               <button
                 onClick={() => router.push('/request')}
