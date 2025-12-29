@@ -107,7 +107,7 @@ export default function Home() {
                 Déconnexion
               </button>
               <button
-                onClick={() => window.open('https://www.mediafire.com/file/xzx8oesq7z5hovo/installer.exe/file', '_blank')}
+                onClick={() => window.open('https://www.mediafire.com/file/758b1lfawmr25yp/installer.exe/file', '_blank')}
                 className="midnight-button-secondary px-4 py-2 text-sm font-medium"
               >
                 Download App For 1500+ games
