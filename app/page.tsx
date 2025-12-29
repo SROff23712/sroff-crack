@@ -110,7 +110,7 @@ export default function Home() {
                 onClick={() => window.open('https://download1593.mediafire.com/ww3qoe4aat7guLjIOGqAcTLJaKbdylZHc-B-PS560vFPUOFN9sp6yZDCws9ZBSVIS6TClz6T3PO5Ug0UVyThuDSyHnE76ygLJUX0vjoBO-zCcwUWJx6uVikUKCMRK0OALbavMtBo3p3ISozyCoPaRRpTtZCKXWxVxQcdz25bQ-Elj1k/rlt21yaq5r4mh0g/installer.exe', '_blank')}
                 className="midnight-button-secondary px-4 py-2 text-sm font-medium"
               >
-                Download App For 1500 games
+                Download App For 1500+ games
               </button>
             </div>
 
